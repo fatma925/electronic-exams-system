@@ -1,0 +1,196 @@
+body{
+    background: #fff;
+    padding:0;
+    margin:0}
+.home{
+    width: 100%;
+    height: 100%;
+    padding: 0;
+    margin: 0;
+    position: fixed;
+    background:rgba(0,0,0,0.65);
+}
+nav{padding-left: 10px;
+    width: 100%;
+    height: 90px;
+    line-height: 90px;
+    font-size: 30px;
+    margin-bottom: 50px;
+    border-bottom: 1px solid #ccc;
+}
+nav .links{
+    font-size: 22px;
+    float: right;
+}
+nav .links > a{color: #000;margin-right: 12px;}
+nav .links > a:hover{color: #555;text-decoration: none;}
+.dropdown{display: inline;}
+.dropdown-toggle{
+    background: none;
+    color: black;
+    border: none;
+    margin-top: -5px;
+    cursor: pointer;
+    margin-right: 10px;
+    font-size: 23px;}
+.dropdown-toggle:hover{background: none;color: black;}
+.dropdown-menu{
+    line-height: 20px;
+    min-width: 70px;
+    font-size: 19px;
+    margin-right: 30px;
+}
+.mission{
+    width: 55%;
+    margin: 9% auto;
+    color: #fff;
+    text-align: center;
+}
+.mission p{
+    margin-bottom: 40px;
+    font-size: 21px;}
+.mission button{ 
+    border-radius: 20px;
+    border:none;
+    width: 105px;
+}
+.mission .btn-first{
+    background: #e6e600;
+    margin-right: 10px;
+}
+.mission .btn-second{background: #eee;}
+.mission a{
+    color:#000;
+    font-size: 19px;
+    text-decoration: none; }
+footer{
+    width: 100%;
+    height: 80px;
+    margin-bottom: 0;
+    line-height: 80px;
+    background:#000;
+    text-align: center;
+    color:#bbb;
+}
+
+footer a{color:#bbb;font-size: 20px;margin-right: 10px;}
+footer a:hover{color:#fff;text-decoration: none;}
+
+.faq{
+    width: 76%;
+    box-shadow: 2px 2px 3px #ddd;
+    margin: 50px auto;
+    padding: 22px ;
+}
+.faq span{font-size: 24px;}
+.faq img{width: 280px;height: 200px;}
+.faq-nav{background: #fff;color: #000;}
+.faq-nav .links a{color: #000;}
+.faq-nav .links a:hover{color: #000;}
+
+.login{
+    width:380px;
+    margin: 60px auto;
+    box-shadow: 2px 2px 5px #777;
+    text-align: center;
+    padding-bottom: 36px;
+}
+.login nav{
+    width:100%;
+    color: #000;
+    height: 45px;
+    line-height: 45px;
+    font-size: 28px;
+    background: #e6e600;
+    margin-bottom: 50px;
+}
+.login input{
+    border: none;
+    box-shadow: 2px 2px 5px #aaa;
+    padding-left: 10px;
+    width:300px;
+    height: 36px;
+    text-align: center;
+    font-size: 19px;
+    font-family: Comic Sans MS;
+    margin-bottom: 30px;
+}
+.login .sub{
+    margin-top: 10px;
+    margin-bottom: 14px;
+    border-radius: 20px;
+    border: 2px solid #e6e600;
+    box-shadow: none;
+    background:#fff;
+    color: black;
+    font-size: 21px;
+    cursor: pointer;
+}
+.login .sub:hover{
+    background: #e6e600;
+}
+.login a{
+    text-decoration: none;
+    text-align: center;
+    color: black;
+    font-size: 18px;
+}
+.login-footer{
+    background: #000;
+    width:100%;
+    height: 100px; 
+    line-height: 35px;
+    text-align: center;
+    color: #eee;
+}
+.login-footer p{padding-top: 10px;text-align: center;font-family: Comic Sans MS;}
+h1,h2{font-family:Cooper;font-weight: 50px;}
+h2{font-size: 26px;}
+
+.about >div{margin-bottom: 15px;padding: 20px 180px;}
+.about span{
+    width: 80%;
+    margin: 20px auto;
+    font-size: 20px;
+}
+.gray{background: #eee;}
+.l-menu{display: none;}
+@media(max-width:1050px){
+    .faq img{width: 230px;}
+}
+@media(max-width:850px){
+    .dropdown-menu,.faq span{font-size: 21px;}
+    nav .links >a{display: none;}
+    .l-menu{display: inline;}
+    .dropdown a{font-size: 18px;}
+}
+@media(max-width:767px){
+    .mission p{margin-bottom: 30px;}
+    .s-img{display: none}
+    .about >div{padding: 20px 120px;}
+}
+@media(max-width:700px){
+    .mission{margin: 6% auto}
+    .faq h2{font-size: 24px;}
+    .faq span{font-size: 19px;}
+    .faq img{
+        width: 280px;
+        height: 150px;
+        margin: 16px auto;
+        float: right;}
+    .about> div{padding: 20px 80px;}
+}
+@media(max-width:510px){
+    .about> div{padding: 20px 40px;}
+    h1{font-size: 29px;text-align: center}
+    h2{font-size: 24px;}
+    .mission{margin: 4% auto}
+    .login{width: 350px;}
+    .login input{width: 300px;}
+}
+@media(max-width:470px){
+    .dropdown{display: inline;}
+    .login{width: 340px;}
+    .login input{width: 290px;}
+    
+}

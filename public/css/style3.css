@@ -1,0 +1,165 @@
+nav{width:100%;
+    height:110px;
+    box-shadow: 2px 2px 3px #aaa;
+}
+nav .logo{
+    font-family: Comic Sans Ms;
+    font-size: 30px;
+    padding-left: 12px;
+}
+nav hr{font-weight: bold;}
+nav .left{
+    float: right;
+    display: inline;
+    padding-top: 10px;}
+nav .dropdown{
+    font-size: 22px;
+    margin-right: 15px;
+    display: inline}
+nav .links{
+    padding-left: 12px;
+    width: 100%;}
+nav a{
+    font-size: 21px;
+    margin-right: 15px;
+    color: #000;
+    text-decoration: none;}
+
+nav .links a{line-height: 17px;}
+nav .links a,.left a{text-decoration: none;}
+
+.links a:hover{
+    color: #f00;
+    text-decoration: underline;}
+
+.left a:hover{color: #000;}
+.dropdown{cursor: pointer}
+.dropdown-menu{
+    min-width: 90px;
+}
+.dropdown-item{font-size: 19px;}
+select{
+    border: none;
+    outline: 0;
+    cursor: pointer;
+    font-size: 20px;}
+.middle{
+    width:80%;
+    margin: 0 auto 50px;
+    text-align: center;
+    box-shadow: 2px 2px 3px #aaa;
+    background: rgb(250,250,250);
+    overflow: auto;
+}
+header{
+    text-align: center;
+    width: 80%;
+    margin: 50px auto 0;
+    box-shadow: 2px 0  3px #aaa;
+    height: 44px;
+    font-size: 25px;
+    line-height: 44px;
+    background: #a00;
+    color: #fff;
+    
+}
+
+.add{
+    padding:15px 60px;
+    margin: 40px auto;
+    width: 80%;
+    text-align: center;
+    box-shadow: 2px 2px 3px #aaa;
+    background: rgb(250,250,250);
+}
+.add span{margin: 10px auto;width: 78%;}
+.add input{
+    width: 100px;
+    box-shadow: 2px 2px 3px #aaa;
+    border: none;
+    height: 40px;
+    margin:10px 15px;
+    border-radius: 6px;
+    text-align: center;}
+.add .f-input{
+    width: 95%;
+    margin:10px auto;
+    padding-left: 10px;
+    text-align: left;}
+.add h4{
+    text-align: center;
+    font-family: Comic Sans Ms;}
+.add button{
+    width: 240px;
+    border-radius: 20px;
+    text-align: center;
+    margin: 16px auto;}
+
+.exam{text-align: center;
+    box-shadow: 2px 2px 4px #888;
+    margin: 0 auto 40px;
+    width: 55%;}
+.exam-head{width: 55%}
+.exam div{width: 100%;}
+
+.exam input[type="time"],
+.exam input[type="number"]{
+    width: 150px;
+    display: inline;
+    border: 0;
+    box-shadow: 2px 2px 3px #888
+}
+
+.exam-sub{
+    font-family: Comic Sans MS;
+    font-size: 17px;
+    padding: 5px;
+    width: 80%;
+    text-align: center;
+    border: none;
+    cursor: pointer;
+    background: #00e6e6;
+    box-shadow: 2px 2px 4px #888;
+    margin-bottom: 20px;
+}
+.exam .lbl{
+    font-size: 17px;
+    display: inline-block;
+    text-align: left;
+    width: 400px;
+}
+footer{
+    background: #000;
+    width:100%;
+    height: 100px; 
+    line-height: 35px;
+    text-align: center;
+    color: #eee;
+}
+footer p{padding-top: 10px;text-align: center;font-family: Comic Sans MS;}
+.logout2{display: none;}
+@media(max-width:1200px){
+    .exam,.exam-head{width: 60%;}
+}
+
+@media(min-width:800px){
+    .table{font-size: 20px;}
+}
+@media(max-width:800px){
+    .table{font-size: 18px;}
+    nav .logo{font-size: 28px;}
+}
+@media(max-width:760px){
+    .exam,.exam-head{width: 80%;overflow: auto;}
+    .exam input{display: block;}
+    .lbl{display: block;}
+}
+@media(max-width:650px){
+    nav .logo{font-size: 26px;}
+    .table{font-size: 17px;}
+    .logout{display: none;}
+    .logout2{display: inline;float: right}
+    nav a{font-size: 20px;margin-right: 10px;}
+    nav .dropdown{margin-right: 12px;}
+    header{font-size: 22px}
+}

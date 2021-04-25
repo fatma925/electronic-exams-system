@@ -1,0 +1,204 @@
+nav{width:100%;
+    height:110px;
+    box-shadow: 2px 2px 3px #aaa;
+    background: #fff;
+}
+nav .logo{
+    font-family: Comic Sans Ms;
+    font-size: 30px;
+    padding-left: 12px;
+}
+hr{font-weight: bold;}
+.left{float: right;
+    display: inline;
+    padding-top: 10px;}
+
+select{
+    border: none;
+    outline: 0;
+    cursor: pointer;
+    font-size: 23px;}
+.links{
+    padding-left: 12px;
+    width: 60%;
+    line-height: 17px;
+    overflow: auto;
+    }
+.links a,.left a{
+    font-size: 22px;
+    margin-right: 15px;
+    color: #000;
+    text-decoration: none;}
+nav a :hover{color: black;}
+
+.dropdown-menu{min-width: 90px;}
+.dropdown-item{font-size: 18px}
+.middle,.exam{
+    z-index: 1;
+    width: 75%;
+    padding-left: 14px;
+    padding-right: 14px;
+    margin: 0 auto 25px;
+    text-align: center;
+    box-shadow: 2px 2px 3px #aaa;
+    background: rgb(250,250,250);
+    overflow: auto;
+}
+
+header{
+    text-align: center;
+    width: 75%;
+    margin: 50px auto 0;
+    box-shadow: 2px 0  3px #aaa;
+    height: 44px;
+    font-size: 25px;
+    line-height: 44px;
+    background: #a00;
+    color: #fff;
+    
+}
+
+.rank{
+    width:75%;
+    margin: 25px auto;
+    text-align: left;
+    height: 60px;
+    line-height: 60px;
+    padding-left: 12px;
+    box-shadow: 2px 2px 3px #aaa;
+    background: rgb(250,250,250);
+    font-size: 20px;
+}
+.middle .left,.right{
+    background: #fff;
+    padding: 10px;
+    margin: 15px auto;
+    display: inline;
+    box-shadow: 2px 2px 3px #aaa;
+}
+
+.middle .left{width: 71%;float: left}
+.middle .right{width: 15%;float: right}
+.middle input[name="answer"]{margin-left: 40px;}
+.true input{margin-left: 80px;}
+..ques{
+    margin: 60px auto;
+    display: block;}
+.ques .middle,.ques header{width: 85%}
+.ques .middle{overflow: auto}
+.dropdown{
+    font-size: 23px;
+    margin-right: 15px;
+    display: inline}
+.exam{
+    background: #fff;
+    box-shadow: none;
+    margin: 60px auto;
+    
+}
+.exam .middle{
+    display: flex;
+    flex-wrap: nowrap;
+}
+.exam .middle,.exam header{width: 95%;}
+.exam,.e-h{width: 60%;}
+.e-left{float: left;margin: 40px auto;}
+.e-right{float: right;margin: 40px auto;}
+
+.save{
+    width: 95%;
+    text-align: center;
+    margin: 0 auto 20px;
+}
+.nots{
+    width: 90%;
+    text-align: center;
+    margin: 16px; auto ;
+    font-size: 17px;
+}
+.e-right .e-left{
+    flex: 1;
+}
+.e-right div,.e-left div{
+    width: 280px;
+    font-weight: 600; 
+    padding: 4px 8px;
+    height: 35px;
+    background: #fff;
+    box-shadow: 2px 2px 3px #ddd;
+}
+.e-left h5{
+    font-family: Comic Sans MS;;
+    width: 280px;
+    padding-top: 12px;
+    background: #fff;
+    height: 220px;
+    box-shadow: 2px 2px 3px #ddd;
+}
+
+footer{
+    background: #000;
+    width:100%;
+    height: 100px; 
+    line-height: 35px;
+    text-align: center;
+    color: #eee;
+    z-index: 4;
+}
+footer p{padding-top: 10px;text-align: center;font-family: Comic Sans MS;}
+.logout2,.not2{display: none;}
+
+
+@media(max-width:1150px){
+    .exam{width: 80%;}
+    .exam .middle,.exam header{width: 96%;}
+}
+@media(max-width:860px){
+    .e-right div,.e-left div,.exam h5{width:250px;}
+}
+@media(min-width:800px){
+    .table{font-size: 20px;}
+}
+@media(max-width:800px){
+    .middle,header,.rank{width: 80%;}
+    header{font-size: 22px;} 
+    nav .logo{font-size: 28px;}
+    .middle .right{width: 20%;}
+    .logout{display: none;}
+    .logout2{display: inline;float: right;}
+    .middle .left{width: 70%;}
+    .middle .right{width: 20%;}
+    .middle input[name="answer"]{margin-left: 30px;}
+    .exam{width: 88%;}
+    .e-right div,.e-left div,.exam h5{width:230px;}
+}
+@media(max-width:700px){
+    .ques .middle,.ques header{width: 90%}
+    .middle .left{width: 67%;}
+    .middle .right{width: 24%;}
+    h3{font-size: 24px;}
+    h5{font-size: 18px;}
+    .middle input[name="answer"]{margin-left: 15px;}
+    .links a{font-size: 22px;margin-right: 13px;}
+    select,.dropdowan{font-size: 21px}
+    .e-left,.e-right{margin: 40px 20px;}
+}
+@media(max-width:650px){
+    .middle .left{width: 62%;}
+    .middle .right{width: 28%;}
+    .middle input[name="answer"]{margin-left: 10px;}
+    .drop{display: none;}
+    nav .dropdown{margin-right: 12px;font-size: 22px;}
+    header{font-size: 20px}
+}
+
+@media(max-width:600px){
+    nav .logo{font-size: 26px;}
+    .links a{font-size: 19px;margin-right: 8px;}
+    .logout2{
+        display: inline;
+        float: right;
+        padding-right: 5px;}
+    .middle input[name="answer"]{margin-left: 7px;}
+}
+body {margin: 0;padding: 0;}
