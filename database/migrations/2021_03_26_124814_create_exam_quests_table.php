@@ -15,6 +15,9 @@ class CreateExamQuestsTable extends Migration
     {
         Schema::create('exam_quests', function (Blueprint $table) {
             $table->id();
+            $table->foreignId('QId')->constrained('professors');
+            $table->foreignId('examId')->constrained('exams');
+            
             $table->timestamps();
         });
     }

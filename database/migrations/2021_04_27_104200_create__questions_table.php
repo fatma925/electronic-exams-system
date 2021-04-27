@@ -13,14 +13,14 @@ class CreateQuestionsTable extends Migration
      */
     public function up()
     {
-        Schema::create('questions', function (Blueprint $table) {
+        Schema::create('_questions', function (Blueprint $table) {
             $table->id();
             $table->string('quest');
             $table->string('type');
             $table->string('complexity');
             $table->integer('degree')->nullable();
             $table->foreignId('chapterId')->constrained('chapters');
-            $table->foreignId('subId')->constrained('subjects');
+            $table->foreignId('subId')->constrained('_subjects');
             $table->string('correctA');
             $table->string('WA1');
             $table->string('WA2');
@@ -36,6 +36,6 @@ class CreateQuestionsTable extends Migration
      */
     public function down()
     {
-        Schema::dropIfExists('questions');
+        Schema::dropIfExists('_questions');
     }
 }

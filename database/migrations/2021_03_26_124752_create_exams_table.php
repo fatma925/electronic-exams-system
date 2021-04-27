@@ -15,6 +15,13 @@ class CreateExamsTable extends Migration
     {
         Schema::create('exams', function (Blueprint $table) {
             $table->id();
+            $table->time("start");
+            $table->time("end");
+            $table->integer("allQs");
+            $table->integer("hardQs");
+            $table->integer("midQs");
+            $table->integer("easyQs");
+            $table->foreignId('subtitle')->constrained('_subjects');
             $table->timestamps();
         });
     }

@@ -17,9 +17,12 @@ class CreateSubjectsTable extends Migration
             $table->id();
             $table->string('subTitle');
             $table->char('subCode')->nullable()->unique();
-            $table->foreignId('levelId')->constrained('levels');
-            $table->foreignId('departId')->constrained('departs');
             $table->foreignId('profId')->constrained('professors');
+            $table->foreignId('levelIdId')->constrained('_levels');
+            $table->foreignId('departId')->constrained('_departs');
+            
+            
+            
             $table->timestamps();
         });
     }

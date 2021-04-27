@@ -16,8 +16,8 @@ class CreateResultsTable extends Migration
         Schema::create('results', function (Blueprint $table) {
             $table->id();
             $table->integer('result');
-            $table->foreignId('studentId')->constrained('students');
-            $table->foreignId('subId')->constrained('subjects');
+            $table->foreignId('studentId')->constrained('_students');
+            $table->foreignId('subId')->constrained('_subjects');
             
             $table->timestamps();
         });
