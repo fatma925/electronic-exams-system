@@ -2,11 +2,25 @@
 @section('title', 'student register')
 @section('subtitle', 'GetYourExam-login')
 @section('content')
-         <form> 
-             <input type="text" placeholder="full name"><br>
-             <input type="password" placeholder="password"><br>
-             <input type="text" placeholder="level"><br>
-             <input type="text" placeholder="Department"><br>
+         <form method="POST" action="student_register2"> 
+             @csrf
+             <input type="text" placeholder="full name" name="name" required><br>
+             <input type="password" placeholder="password" name="pass" required><br>
+             <input type="number" placeholder="academic Id" name="AcademicCode" required><br>
+             <select type="text" placeholder="level" name="level" required><br>
+                
+                @foreach ($levels as $item)
+                    <option>{{$item->name}}</option>
+                @endforeach
+
+             </select><br>
+             <select type="text" placeholder="Department" name="depart" required>
+
+                @foreach ($departs as $item)
+                    <option>{{$item->name}}</option>
+                @endforeach
+                
+             </select><br>
              <input type="submit"  class="sub" value="Sign Up">
          </form>
         <a href="student_login">already registered ?</a>

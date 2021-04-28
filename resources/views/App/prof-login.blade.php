@@ -3,9 +3,10 @@
 @section('subtitle', 'GetYourExam-login')
 @section('content')
 
-<form> 
-  <input type="text" placeholder="full name"><br>
-  <input type="password" placeholder="password"><br>
+<form method="POST" action="prof-login"> 
+  @csrf
+  <input type="text" placeholder="full name" name="name"><br>
+  <input type="password" placeholder="password" name="pass"><br>
   <input type="submit" class="sub" value="LogIn">
 </form>
 

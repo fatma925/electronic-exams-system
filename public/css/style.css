@@ -104,7 +104,7 @@ footer a:hover{color:#fff;text-decoration: none;}
     background: #e6e600;
     margin-bottom: 50px;
 }
-.login input{
+.login input,select{
     border: none;
     box-shadow: 2px 2px 5px #aaa;
     padding-left: 10px;
