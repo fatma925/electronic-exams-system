@@ -3,8 +3,8 @@
 namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
-
-class ProfessorController extends Controller
+use App\Models\professor;
+class StudentController extends Controller
 {
     /**
      * Display a listing of the resource.
@@ -13,17 +13,8 @@ class ProfessorController extends Controller
      */
     public function index()
     {
-        //
-    }
-
-    /**
-     * Show the form for creating a new resource.
-     *
-     * @return \Illuminate\Http\Response
-     */
-    public function create()
-    {
-        //
+        $prof= professor::all();
+        return response()->view('Admin.prfessors',['student'=>$prof]);
     }
 
     /**
@@ -34,7 +25,13 @@ class ProfessorController extends Controller
      */
     public function store(Request $request)
     {
-        //
+        $request->validate([
+            'name'=> 'required',
+            
+            'email'=> 'required | email |unique:professors'
+        ]);
+        response()->json(professor::create($request->all()), 201);
+        return redirect('api/professors');
     }
 
     /**
@@ -45,18 +42,11 @@ class ProfessorController extends Controller
      */
     public function show($id)
     {
-        //
-    }
-
-    /**
-     * Show the form for editing the specified resource.
-     *
-     * @param  int  $id
-     * @return \Illuminate\Http\Response
-     */
-    public function edit($id)
-    {
-        //
+        $prof = professor::find($id);
+        if(is_null($prof)){
+            return response()->json('record not found', 404);
+        }
+        return response()->json($prof);
     }
 
     /**
@@ -66,9 +56,25 @@ class ProfessorController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
+
+    public function edit($id)
+    {
+        $prof = professor::find($id);
+        return view('Admin.editProfessor', ['prof'=> $prof]);
+        
+    }
     public function update(Request $request, $id)
     {
-        //
+        $request->validate([
+            'name'=> 'required',
+            'email'=> 'required | email |unique:professors'
+        ]);
+        $prof = professor::find($id);
+        if(is_null($prof)){
+            return response()->json('record not found', 404);
+        }
+        $prof->update($request->all());
+        return response()->json($prof, 200);
     }
 
     /**
@@ -79,6 +85,10 @@ class ProfessorController extends Controller
      */
     public function destroy($id)
     {
-        //
+       $prof = professor::destroy($id);
+       if(is_null($prof)){
+        return response()->json('record not found', 404);
+    }
+        return redirect("api/professors");
     }
 }

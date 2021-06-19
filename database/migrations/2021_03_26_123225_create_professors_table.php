@@ -15,7 +15,7 @@ class CreateProfessorsTable extends Migration
     {
         Schema::create('professors', function (Blueprint $table) {
             $table->id();
-            $table->string('name');
+            $table->string('prof_name');
             $table->string("email")->unique();
             $table->string('priviledge')->nullable()->unique();
             $table->string('password');

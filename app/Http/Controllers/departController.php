@@ -3,8 +3,9 @@
 namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
-use App\Models\student;
-class StudentController extends Controller
+use App\Models\depart;
+
+class departController extends Controller
 {
     /**
      * Display a listing of the resource.
@@ -13,8 +14,9 @@ class StudentController extends Controller
      */
     public function index()
     {
-        $student= student::all();
-        return response()->view('Admin.students',['student'=>$student]);
+        //
+        $depart = depart::all();
+        return response()->view('Admin.depart',['depart'=>$depart]);
     }
 
     /**
@@ -25,15 +27,12 @@ class StudentController extends Controller
      */
     public function store(Request $request)
     {
+        //
         $request->validate([
-            'name'=> 'required',
-            
-            'AcademicCode'=> 'required | min:11 | max:11 |unique:_students',
-            'level'=> 'required',
-            'depart'=> 'required'
+            'name'=> 'required|unique:departs',
         ]);
-        response()->json(student::create($request->all()), 201);
-        return redirect('api/students');
+        response()->json(depart::create($request->all()),201);
+        return redirect('api/departs');
     }
 
     /**
@@ -44,11 +43,11 @@ class StudentController extends Controller
      */
     public function show($id)
     {
-        $student = student::find($id);
-        if(is_null($student)){
+        $depart = depart::find($id);
+        if(is_null($depart)){
             return response()->json('record not found', 404);
         }
-        return response()->json($student);
+        return response()->json($depart);
     }
 
     /**
@@ -61,25 +60,23 @@ class StudentController extends Controller
 
     public function edit($id)
     {
-        $student = student::find($id);
-        return view('Admin.editStudent', ['student'=> $student]);
+        $depart = depart::find($id);
+        return view('Admin.editDepart', ['depart'=> $depart]);
         
     }
     public function update(Request $request, $id)
     {
+        //
         $request->validate([
-            'name'=> 'required',
-            
-            'AcademicCode'=> 'required | min:11 | max:11 |unique:_students',
-            'level'=> 'required',
-            'depart'=> 'required'
+            'name'=> 'required|unique:departs',
+            'head_id'=> 'required'
         ]);
-        $student = student::find($id);
-        if(is_null($student)){
+        $depart = depart::find($id);
+        if(is_null($depart)){
             return response()->json('record not found', 404);
         }
-        $student->update($request->all());
-        return response()->json($student, 200);
+        $depart->update($request->all());
+        return response()->json($depart, 200);
     }
 
     /**
@@ -90,10 +87,11 @@ class StudentController extends Controller
      */
     public function destroy($id)
     {
-       $student = student::destroy($id);
-       if(is_null($student)){
-        return response()->json('record not found', 404);
-    }
-        return redirect("api/students");
+        //
+        $depart = depart::destroy($id);
+        if(is_null($depart)){
+            return response()->json('record not found', 404);
+        }
+        return redirect("api/departs");
     }
 }

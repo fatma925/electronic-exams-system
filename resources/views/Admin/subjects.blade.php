@@ -13,26 +13,18 @@
             </tr>
           </thead>
           <tbody>
+            @foreach ($subject as $sub)
             <tr>
-                 <th scope="row">1</th>
-                 <td>Design pattern</td>
-                 <td>SE-U55</td>
-                 <td> semester three</td>
-                 <td>general</td>
-                 <td>Software Engineering</td>
-                 <td><a href="#" class="btn btn-primary">edit</a></td>
-                 <td><a href="#" class="btn btn-danger">delete</a></td>
-            </tr>
-            <tr>
-                 <th scope="row">1</th>
-                 <td>Design pattern</td>
-                 <td>SE-U55</td>
-                 <td> semester three</td>
-                 <td>general</td>
-                 <td>Software Engineering</td>
-                 <td><a href="#" class="btn btn-primary">edit</a></td>
-                 <td><a href="#" class="btn btn-danger">delete</a></td>
-            </tr>
+              <th scope="row">{{$sub->id}}</th>
+              <td>{{$sub->subTitle}}</td>
+              <td>{{$sub->subCode}}</td>
+              <td> {{$sub->level_name}}</td>
+              <td>{{$sub->depart_name}}</td>
+              <td>{{$sub->prof_name}}</td>
+              <td><a href="#" class="btn btn-primary">edit</a></td>
+              <td><a href="#" class="btn btn-danger">delete</a></td>
+         </tr>
+            @endforeach
             
           </tbody>
         </table>

@@ -1,5 +1,9 @@
 <?php
 
+use App\Http\Controllers\AdminController;
+use App\Http\Controllers\SystemEntryController;
+use App\Models\User;
+use App\Http\Controllers\departController;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Route;
 
@@ -14,6 +18,14 @@ use Illuminate\Support\Facades\Route;
 |
 */
 
-Route::middleware('auth:api')->get('/user', function (Request $request) {
-    return $request->user();
+
+Route::post('profRegister', [SystemEntryController::class, 'profregister']);
+
+
+Route::group(['middleware'=>['auth:sanctum']],function () {
+    Route::resource('departs', departController::class);
+    Route::resource('students', departController::class);
+    Route::resource('levels', departController::class);
+    Route::resource('subjects', departController::class);
+    Route::resource('professors', departController::class);
 });

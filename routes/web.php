@@ -13,11 +13,11 @@ use App\Http\Controllers\SystemEntryController;
 |
 */
 
-Route::get('/home', function () {
+Route::get('/', function () {
     return view('App.index');
 });
 
-Route::post('prof-register', [SystemEntryController::class, "profRegiter"]);
+//Route::post('prof-register', [SystemEntryController::class, "profRegiter"]);
 Route::post('prof-login', [SystemEntryController::class, "profLogin"]);
 
 Route::view("student_login" , "App.student-login");

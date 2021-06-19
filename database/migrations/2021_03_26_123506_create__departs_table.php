@@ -15,7 +15,7 @@ class CreateDepartsTable extends Migration
     {
         Schema::create('_departs', function (Blueprint $table) {
             $table->id();
-            $table->string('name');
+            $table->string('depart_name')->unique();
             $table->foreignId('headId')->constrained('professors');
             $table->timestamps();
         });

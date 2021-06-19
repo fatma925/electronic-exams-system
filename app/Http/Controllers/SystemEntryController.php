@@ -9,24 +9,34 @@ use App\Models\student;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\DB;
 use Illuminate\Support\Facades\Hash;
+use Illuminate\Http\Response;
+
 class SystemEntryController extends Controller
 {
     
-    public function profRegiter(Request $request)
+    public function profregister(Request $request)
     {
         //
-        $request->validate([
+        $validate = $request->validate([
             'name'=> 'required',
             'pass'=> 'required | min:8',
             'email'=> 'required | email |unique:professors'
         ]);
-        $prof = new professor();
-        $prof->name = $request->name;
-        $prof->email = $request->email;
-        $prof->password = Hash::make($request->pass);
-        $prof->priviledge = $request->priv;
-        $prof->save();
-        return view('App.prof-login');
+
+        $prof = professor::create([
+            'prof_name' => $validate['name'],
+            'password' => bcrypt($validate['pass']),
+            'email' => $validate['email']
+
+        ]);
+
+        $token = $prof->createToken("appToken")->plainTextToken;
+        $response = [
+            'prof' => $prof,
+            'token' => $token
+        ];
+        return response($response, 201);
+       
     }
 
 
@@ -38,11 +48,11 @@ class SystemEntryController extends Controller
         session()->put('user',$user);
         
         $data = DB::table('professors')
-        ->where("name", "=", $user)
+        ->where("prof_name", "=", $user)
         ->get();
 
         if(!empty($data[0])){
-        $name = $data[0]->name;
+        $name = $data[0]->prof_name;
         $id = $data[0]->id;
         $password = $data[0]->password;
         $groubID = $data[0]->groubID;
@@ -52,7 +62,8 @@ class SystemEntryController extends Controller
 
         	if($groubID == 1)
         	{
-        		return view('Admin.depart');
+        		return redirect("api/departs");
+           
         	}
         	else if($groubID == 0)
         	{

@@ -23,7 +23,7 @@
          <span class="links">
              <a href="profs">professors</a>
              <a href="students">students</a>
-             <a href="departs">departments</a>
+             <a href="api/departs">departments</a>
              <a href="levels">levels</a>
              <a href="subjects">subjects</a>
              <a href="#">requests</a>

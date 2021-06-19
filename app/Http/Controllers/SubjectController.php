@@ -3,8 +3,9 @@
 namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
-use App\Models\student;
-class StudentController extends Controller
+use App\Models\subject;
+
+class SubjectController extends Controller
 {
     /**
      * Display a listing of the resource.
@@ -13,8 +14,8 @@ class StudentController extends Controller
      */
     public function index()
     {
-        $student= student::all();
-        return response()->view('Admin.students',['student'=>$student]);
+        $subject = subject::all();
+        return response()->view('Admin.subjects', ['subject'=> $subject]);
     }
 
     /**
@@ -27,13 +28,11 @@ class StudentController extends Controller
     {
         $request->validate([
             'name'=> 'required',
-            
-            'AcademicCode'=> 'required | min:11 | max:11 |unique:_students',
             'level'=> 'required',
             'depart'=> 'required'
         ]);
-        response()->json(student::create($request->all()), 201);
-        return redirect('api/students');
+        subject::create($request->all());
+        return redirect('subjects');
     }
 
     /**
@@ -44,11 +43,11 @@ class StudentController extends Controller
      */
     public function show($id)
     {
-        $student = student::find($id);
-        if(is_null($student)){
+        $sub = subject::find($id);
+        if(is_null($sub)){
             return response()->json('record not found', 404);
         }
-        return response()->json($student);
+        return $sub;
     }
 
     /**
@@ -61,25 +60,23 @@ class StudentController extends Controller
 
     public function edit($id)
     {
-        $student = student::find($id);
-        return view('Admin.editStudent', ['student'=> $student]);
+        $subject = subject::find($id);
+        return view('Admin.editSubject', ['subject'=> $subject]);
         
     }
     public function update(Request $request, $id)
     {
         $request->validate([
             'name'=> 'required',
-            
-            'AcademicCode'=> 'required | min:11 | max:11 |unique:_students',
             'level'=> 'required',
             'depart'=> 'required'
         ]);
-        $student = student::find($id);
-        if(is_null($student)){
+        $sub = subject::find($id);
+        if(is_null($sub)){
             return response()->json('record not found', 404);
         }
-        $student->update($request->all());
-        return response()->json($student, 200);
+        $sub->update($request->all());
+        return $sub;
     }
 
     /**
@@ -90,10 +87,11 @@ class StudentController extends Controller
      */
     public function destroy($id)
     {
-       $student = student::destroy($id);
-       if(is_null($student)){
+       $sub = subject::destroy($id);
+       if(is_null($sub))
+       {
         return response()->json('record not found', 404);
-    }
-        return redirect("api/students");
+       }
+       return redirect('Admin.subjects');
     }
 }

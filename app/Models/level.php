@@ -9,4 +9,12 @@ class level extends Model
 {
     use HasFactory;
     protected $table = "_levels";
+    protected $fillable = [
+        'level_name'
+    ];
+
+    public function subjects()
+    {
+        return $this->hasMany(subjects::class);
+    }
 }

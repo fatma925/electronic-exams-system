@@ -2,7 +2,7 @@
 @section('title', 'professor register')
 @section('subtitle', 'GetYourExam-SignUp')
 @section('content')
-         <form action="prof-register" method="POST"> 
+         <form action="api/profRegister" method="POST"> 
 
              @csrf
 

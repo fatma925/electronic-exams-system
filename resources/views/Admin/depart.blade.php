@@ -10,32 +10,23 @@
 </tr>
 </thead>
 <tbody>
-<tr>
-    <td>1</td>
-    <td>Software Engineering</td>
-    <td><a href="#" class="btn btn-primary">edit</a></td>
-    <td><a href="#" class="btn btn-danger">delete</a></td>
+    @foreach ($depart as $depart)
+    <tr>
+        <td>{{$depart->id}}</td>
+        <td>{{$depart->depart_name}}</td>
+        <td><a href="{{ url('api/editDepart')}}" class="btn btn-primary">edit</a></td>
+        <td>
+        <button><a href="{{ url('api/departs/' . $depart->id ) }}" class="btn btn-danger">delete</a></button></td>
+    
+    </tr>
+    @endforeach
 
-</tr>
-<tr>
-    <td scope="row">2</td>
-    <td>CS</td>
-    <td><a href="#" class="btn btn-primary">edit</a></td>
-    <td><a href="#" class="btn btn-danger">delete</a></td>
-
-</tr>
-<tr>
-    <td scope="row"> 3</td>
-    <td>Bio</td>
-    <td><a href="#" class="btn btn-primary">edit</a></td>
-    <td><a href="#" class="btn btn-danger">delete</a></td>
-
-</tr>
 </tbody>  
 </table>  
 </div>
 <div class="add small">
-<form>
+<form action="{{url('api/departs')}}" action="post">
+    @csrf
 <h4>Add new depart<span>ment</span></h4>
 <input type="text" name="depart">
 <input type="submit" class="btn btn-primary" value="Add">

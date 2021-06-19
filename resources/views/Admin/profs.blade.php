@@ -9,27 +9,21 @@
             <tr>
               <th scope="col">ID</th>
               <th scope="col">Name</th>
-              <th scope="col">Password</th>
+            
               <th scope="col">Priviledge</th>
             </tr>
           </thead>
           <tbody>
+            @foreach ($prof as $prof)
             <tr>
-                 <th scope="row">1</th>
-                 <td>Reda Mabrouk</td>
-                 <td>reda2020</td>
-                 <td></td>
-                 <td class="edit1"><a href="#" class="btn btn-primary">edit</a></td>
-                 <td class="delete1"><a href="#" class="btn btn-danger">delete</a></td>
-            </tr>
-            <tr>
-                 <th scope="row">1</th>
-                 <td>Haitham Elwahesh</td>
-                 <td>haitham2020</td>
-                 <td></td>
-                 <td class="edit1"><a href="#" class="btn btn-primary">edit</a></td>
-                 <td class="delete1"><a href="#" class="btn btn-danger">delete</a></td>
-            </tr>
+              <th scope="row">{{$prof->id}}</th>
+              <td>{{$prof->name}}</td>
+              
+              <td>{{$prof->priviledge}}</td>
+              <td class="edit1"><a href="#" class="btn btn-primary">edit</a></td>
+              <td class="delete1"><a href="#" class="btn btn-danger">delete</a></td>
+         </tr>
+            @endforeach
           </tbody>
         </table>
          

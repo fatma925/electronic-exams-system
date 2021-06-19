@@ -3,37 +3,29 @@
 @section('subtitle', 'Students')
  
 @section('content')
+
             <tr>
               <th scope="col">ID</th>
               <th scope="col">Name</th>
               <th scope="col">Code</th>
-              <th scope="col">Password</th>
+              
               <th scope="col">Level</th>
               <th scope="col">Department</th>
             </tr>
           </thead>
           <tbody>
+            @foreach ($student as $st)
             <tr>
-                 <th scope="row">1</th>
-                 <td>Kamla Saad Ismail</td>
-                 <td>888888</td>
-                 <td>12844</td>
-                 <td>one</td>
-                 <td>Software Engineering</td>
-                 <td class="edit1"><a href="#" class="btn btn-primary">edit</a></td>
-                 <td class="delete1"><a href="#" class="btn btn-danger">delete</a></td>
-            </tr>
-            <tr>
-              <th scope="row">2</th>
-                 <td>Kamla Saad Ismail</td>
-                 <td>888888</td>
-                 <td>12844</td>
-                 <td>one</td>
-                 <td>Software Engineering</td>
-                 <td class="edit1"><a href="#" class="btn btn-primary">edit</a></td>
-                 <td class="delete1"><a href="#" class="btn btn-danger">delete</a></td>
-            </tr>
-            
+              <th scope="row">{{$st->id}}</th>
+              <td>{{$st->name}}</td>
+              <td>{{$st->AcademicCode}}</td>
+             
+              <td>{{$st->level}}</td>
+              <td>{{$st->depart}}</td>
+              <td class="edit1"><a href="#" class="btn btn-primary">edit</a></td>
+              <td class="delete1"><a href="#" class="btn btn-danger">delete</a></td>
+         </tr>
+         @endforeach
           </tbody>
         </table>
          

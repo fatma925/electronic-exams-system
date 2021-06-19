@@ -9,4 +9,11 @@ class depart extends Model
 {
     use HasFactory;
     protected $table = "_departs";
+    protected $fillable = ['depart_name',
+   'headId'];
+
+    public function subjects()
+    {
+        return $this->hasMany(subject::class);
+    }
 }

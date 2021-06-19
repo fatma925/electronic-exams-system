@@ -61,7 +61,7 @@
              to be ready and arrangeyourthoughts<br>
              to get the bestresult..</p>
              <button class="btn-first">
-                 <a href="prof_login">Professor</a>
+                 <a href="prof_register">Professor</a>
              </button>
              <button class="btn-second">
                  <a href="student_login">Student</a>

@@ -9,27 +9,17 @@
                  </tr>
              </thead>
              <tbody>
+                 @foreach ($level as $level)
                  <tr>
-                     <td>1</td>
-                     <td>one</td>
-                     <td><a href="#" class="btn btn-primary">edit</a></td>
-                     <td><a href="#" class="btn btn-danger">delete</a></td>
+                    <td>{{$level->id}}</td>
+                    <td>{{$level->level_name}}</td>
+                    <td><a href="#" class="btn btn-primary">edit</a></td>
+                    <td><a href="#" class="btn btn-danger">delete</a></td>
+                
+                </tr>
+                 @endforeach
                  
-                 </tr>
-                 <tr>
-                     <td scope="row">2</td>
-                     <td>two</td>
-                     <td><a href="#" class="btn btn-primary">edit</a></td>
-                     <td><a href="#" class="btn btn-danger">delete</a></td>
-
-                 </tr>
-                 <tr>
-                     <td scope="row"> 3</td>
-                     <td>three</td>
-                     <td><a href="#" class="btn btn-primary">edit</a></td>
-                     <td><a href="#" class="btn btn-danger">delete</a></td>
-
-                 </tr>
+               
              </tbody>  
          </table> 
          
