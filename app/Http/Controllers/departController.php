@@ -4,6 +4,8 @@ namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
 use App\Models\depart;
+use GrahamCampbell\ResultType\Success;
+use Illuminate\Support\Facades\Validator;
 
 class departController extends Controller
 {
@@ -15,8 +17,10 @@ class departController extends Controller
     public function index()
     {
         //
-        $depart = depart::all();
-        return response()->view('Admin.depart',['depart'=>$depart]);
+        $departs = depart::all();
+       
+        return response()->json($departs);
+        // view('Admin.depart',['depart'=>$depart]);
     }
 
     /**
@@ -27,12 +31,29 @@ class departController extends Controller
      */
     public function store(Request $request)
     {
-        //
-        $request->validate([
-            'name'=> 'required|unique:departs',
+        $validator = Validator::make($request->all(),[
+            'depart_name'=> 'required|unique:_departs',
+            'headId' => 'required'
         ]);
-        response()->json(depart::create($request->all()),201);
-        return redirect('api/departs');
+
+        if($validator->fails()){
+            $response = array('response' => $validator->getMessageBag(), "success"=>FALSE);
+            return $response;
+        }
+        else{
+            // create new record
+            $depart = new depart();
+            $depart->depart_name = $request->input('depart_name');
+            $depart->headId = $request->input('headId');
+            $depart->save();
+            return response()->json($depart,200);
+        }
+        //
+        // $request->validate([
+        //     'depart_name'=> 'required|unique:departs',
+        // ]);
+        // response()->json(depart::create($request->all()),201);
+        // //return redirect('api/departs');
     }
 
     /**
@@ -61,15 +82,18 @@ class departController extends Controller
     public function edit($id)
     {
         $depart = depart::find($id);
-        return view('Admin.editDepart', ['depart'=> $depart]);
+        $name =$depart->depart_name;
+        $head =$depart->head_id;
+       
+         return view('Admin.editDepart', ['name'=> $name, 'head'=> $head ,'id'=>$id]);
         
     }
     public function update(Request $request, $id)
     {
         //
         $request->validate([
-            'name'=> 'required|unique:departs',
-            'head_id'=> 'required'
+            'depart_name'=> 'required|unique:_departs',
+            'headId'=> 'required'
         ]);
         $depart = depart::find($id);
         if(is_null($depart)){
@@ -92,6 +116,6 @@ class departController extends Controller
         if(is_null($depart)){
             return response()->json('record not found', 404);
         }
-        return redirect("api/departs");
+        return response()->json("department deleted",200);
     }
 }

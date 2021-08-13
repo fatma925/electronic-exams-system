@@ -2,7 +2,7 @@
 @section('title', 'student login')
 @section('subtitle', 'GetYourExam-login')
 @section('content')
-<form action="student-login" method="POST">
+<form action="api/studentLogin" method="POST">
   @csrf 
   <input type="text" placeholder="full name" name="name"><br>
   <input type="password" placeholder="password" maxlength="12" name="pass"><br>

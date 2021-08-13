@@ -15,6 +15,6 @@
              <input type="text" placeholder="priviledge" name="priv"><br>
              <input type="submit"  class="sub" value="Sign Up">
          </form>
-        <a href="prof_login">registered before ?</a>
+        <a href="login">registered before ?</a>
      </div>
 @endsection

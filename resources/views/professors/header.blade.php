@@ -10,11 +10,8 @@
      <nav>
           <span class="logo">GetYourExam</span>
           <div class="left">
-              <select>
-                  <option value="0">Subject</option>
-                  <option value="1">Math1</option>
-                  <option value="2">Math1</option>
-                  <option value="3">Math1</option>
+              <select id="sub">
+                  
               </select>
              <div class="dropdown">
                   <span data-toggle="dropdown" class="dropdown-toggle l-menu"> 
@@ -40,13 +37,33 @@
      
 
 @yield('content')
-
-
-            <footer>
-                <p>all rights reserved<br>&copy;2020 copyright</p> 
-            </footer>
-            <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
-            <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.16.0/umd/popper.min.js"></script> 
-            <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.4.1/js/bootstrap.min.js"></script>
-        </body>
-       </html>
+        
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.16.0/umd/popper.min.js"></script> 
+<script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.4.1/js/bootstrap.min.js"></script>
+<script src="https://code.jquery.com/jquery-1.12.4.js" 
+        integrity="sha256-Qw82+bXyGq6MydymqBxNPYTaUXXq7c8v3CwiYwLLNXU=" crossorigin="anonymous">
+    </script>
+    <script>
+$(document).ready(function(){
+    //alert("hello");
+    getSubjects();
+    function getSubjects(){
+    $.ajax({
+        url:'http://127.0.0.1:8000/api/subjects'
+    }).done(function(subjects){
+let output = '';
+$.each(subjects, function(key, sub){
+        output += `
+        <option>${sub.subTitle}</option>
+        `;
+    //alert(key + ":" + depart.depart_name)
+    });
+$('#sub').append(output);
+    });
+}
+});
+</script>
+@yield('jq');
+</body>
+</html>

@@ -4,7 +4,8 @@ namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
 use App\Models\professor;
-class StudentController extends Controller
+
+class ProfessorController extends Controller
 {
     /**
      * Display a listing of the resource.
@@ -13,8 +14,8 @@ class StudentController extends Controller
      */
     public function index()
     {
-        $prof= professor::all();
-        return response()->view('Admin.prfessors',['student'=>$prof]);
+        $professors= professor::all();
+        return response()->json($professors);
     }
 
     /**

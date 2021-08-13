@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Validator;
 use App\Models\student;
 class StudentController extends Controller
 {
@@ -13,8 +14,8 @@ class StudentController extends Controller
      */
     public function index()
     {
-        $student= student::all();
-        return response()->view('Admin.students',['student'=>$student]);
+        $students= student::all();
+        return response()->json($students, 200);
     }
 
     /**
@@ -25,15 +26,19 @@ class StudentController extends Controller
      */
     public function store(Request $request)
     {
-        $request->validate([
+        $validator = Validator::make($request->all(),[
             'name'=> 'required',
-            
             'AcademicCode'=> 'required | min:11 | max:11 |unique:_students',
             'level'=> 'required',
             'depart'=> 'required'
         ]);
-        response()->json(student::create($request->all()), 201);
-        return redirect('api/students');
+        if($validator->fails()){
+            $response = array('response' => $validator->getMessageBag(), "success"=>FALSE);
+            return $response;
+        }
+        else{
+        return response()->json(student::create($request->all()), 201);}
+         
     }
 
     /**
@@ -94,6 +99,6 @@ class StudentController extends Controller
        if(is_null($student)){
         return response()->json('record not found', 404);
     }
-        return redirect("api/students");
+        return response()->json($student, 200);
     }
 }

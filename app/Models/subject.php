@@ -13,6 +13,7 @@ class subject extends Model
 {
     use HasFactory;
     protected $table = '_subjects';
+    protected $fillable = ['subTitle'];
 
     public function prof()
     {

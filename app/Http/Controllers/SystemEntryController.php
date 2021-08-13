@@ -5,11 +5,16 @@ namespace App\Http\Controllers;
 use App\Models\depart;
 use App\Models\level;
 use App\Models\professor;
+use App\Models\User;
 use App\Models\student;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\DB;
 use Illuminate\Support\Facades\Hash;
 use Illuminate\Http\Response;
+use Illuminate\Support\Facades\Auth;
+use Illuminate\Support\Str;
+
+
 
 class SystemEntryController extends Controller
 {
@@ -20,11 +25,11 @@ class SystemEntryController extends Controller
         $validate = $request->validate([
             'name'=> 'required',
             'pass'=> 'required | min:8',
-            'email'=> 'required | email |unique:professors'
+            'email'=> 'required | email |unique:users'
         ]);
 
-        $prof = professor::create([
-            'prof_name' => $validate['name'],
+        $prof = User::create([
+            'name' => $validate['name'],
             'password' => bcrypt($validate['pass']),
             'email' => $validate['email']
 
@@ -35,107 +40,97 @@ class SystemEntryController extends Controller
             'prof' => $prof,
             'token' => $token
         ];
-        return response($response, 201);
+        return response(redirect('api/departs'));
        
+    }
+
+    public function logout(Request $request)
+    {
+        $request->user()->currentAccessToken()->delete();
+        return [
+            'message' => 'logged out'
+        ];
+
     }
 
 
     public function profLogin(Request $request)
     {
-        session_start();
-        $user = $request->name;
-	    $pass =$request->pass;
-        session()->put('user',$user);
-        
-        $data = DB::table('professors')
-        ->where("prof_name", "=", $user)
-        ->get();
+        $fields = $request->validate([
+            'email' => 'required | string',
+            'pass' => 'required | min:8'
+        ]);
+        $user = professor::where('email', $fields['email'])->first();
+        if(!$user || !Hash::check($fields['pass'], $user->password))
+        {
+            return response(['message'=>'bad creds'], 201);
+        }
+        $token = $user->createToken("appToken")->plainTextToken;
+        $response = [
+            'professor' => $user,
+            'token' => $token
+        ];
 
-        if(!empty($data[0])){
-        $name = $data[0]->prof_name;
-        $id = $data[0]->id;
-        $password = $data[0]->password;
-        $groubID = $data[0]->groubID;
-        session()->put('id',$id);
-        if($name === $user && password_verify($pass, $password))
-        {
+        return redirect('levels');
+        }
 
-        	if($groubID == 1)
-        	{
-        		return redirect("api/departs");
-           
-        	}
-        	else if($groubID == 0)
-        	{
-                session()->put('isStart',true);
-        		return view('professors.chapter');
-        	}
-        }
-        else
-        {
-        	return view('App.prof-login');
-        }
-    }
-        else
-        {
-        	return view('App.prof-register');
-        }
         
-    }
+
 
     public function studentRegister(Request $request)
     {
         //
-        $request->validate([
+        $fields = $request->validate([
             'name'=> 'required',
             'pass'=> 'required | min:8',
             'AcademicCode'=> 'required | min:11 | max:11 |unique:_students',
             'level'=> 'required',
             'depart'=> 'required'
         ]);
-        $st = new student();
-        $st->name = $request->name;
-        $st->AcademicCode = $request->code;
-        $st->password = Hash::make($request->pass);
-        $st->level = $request->level;
-        $st->depart = $request->depart;
-        $st->save();
-        return view('App.student-login');
+        $stud = student::create([
+            'name' => $fields['name'],
+            'password' => bcrypt($fields['pass']),
+            'level' => $fields['level'],
+            'depart' => $fields['depart'],
+            'AcademicCode' => $fields['AcademicCode']
+
+        ]);
+
+        $token = $stud->createToken("appToken")->plainTextToken;
+        $response = [
+            'student' => $stud,
+            'token' => $token
+        ];
+        return response($response, 201);
+        
+        //return view('App.student-login');
     }
 
 
     public function studentLogin(Request $request)
     {
-        session_start();
-        $user = $request->name;
-	    $pass =$request->pass;
-        session()->put('user',$user);
+        $fields = $request->validate([
+            'name' => 'required | string',
+            'pass' => 'required | min:8'
+        ]);
         
-        $data = DB::table('_students')
-        ->where("name", "=", $user)
-        ->get();
+        $user = student::where('name', $fields['name'])->first();
+        if(!$user || !Hash::check($fields['pass'], $user->password))
+        {
+            return response(['message'=>'bad creds'], 201);
+        }
+        $token = $user->createToken("appToken")->plainTextToken;
+        $headers = $request->headers->all();
+        $response = [
+            'student' => $user,
+            'token' => $token
+        ];
+       
+            return redirect('api/departs');
+        
+        
 
-        if(!empty($data[0])){
-        $name = $data[0]->name;
-        $id = $data[0]->id;
-        $password = $data[0]->password;
-        //$groubID = $data[0]->groubID;
-        session()->put('id',$id);
-        if($name === $user && password_verify($pass, $password))
-        {
-
-        		return view('students.question-bank');
-        	
-        }
-        else
-        {
-        	return view('App.student-login');
-        }
-    }
-        else
-        {
-        	return view('App.student-register');
-        }
+        //return response($response, 201);
         
     }
 

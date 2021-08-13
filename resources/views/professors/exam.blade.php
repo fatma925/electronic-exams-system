@@ -5,7 +5,7 @@
 @section('content')
 <div class="exam">
 <div>
-    <form action="" method="post">
+    {{-- <form action="" method="post">
         <table class="table">
             <tr>
                 <td>
@@ -66,26 +66,26 @@
             </tr>
         </table>
         <input type="submit" value="submit your exam" class="exam-sub">
-    </form>
-    {{-- <form action="" method="post"><br>
-        <label class="lbl" style="margin-right: 155px">Start time of exam:</label>
+    </form> --}}
+    <form action="" method="post"><br>
+        <label class="lbl" style="margin-right: 50px">Start time of exam:</label>
         <input type="time" name="stime" id="start"><hr>
-        <label class="lbl" style="margin-right: 160px">End time of exam:</label>
+        <label class="lbl" style="margin-right: 50px">End time of exam:</label>
         <input type="time" name="etime" id="end"><hr>
-        <label class="lbl" style="margin-right: 195px">date of exam:</label>
+        <label class="lbl" style="margin-right: 50px">date of exam:</label>
         <input type="date" name="etime" id="date" style="width: 140px"><hr>
-        <label class="lbl" style="margin-right: 100px">Number of exam question:</label>
+        <label class="lbl" style="margin-right: 50px">Number of exam question:</label>
         <input type="number" name="e-question" id="all"><hr>
-        <label class="lbl" style="margin-right: 97px">Number of Hard questions:</label>
+        <label class="lbl" style="margin-right: 50px">Number of Hard questions:</label>
         <input type="number" name="ch-question" id="hard"><hr>
-        <label class="lbl" style="margin-right: 97px">Number of Easy questions :</label>
+        <label class="lbl" style="margin-right: 50px">Number of Easy questions :</label>
         <input type="number" name="h-question" id="easy"><hr>
-        <label class="lbl" style="margin-right: 40px">Number of intermediate questions :</label>
+        <label class="lbl" style="margin-right: 50px">Number of intermediate questions :</label>
         <input type="number" name="i-question" id="mid"><hr>
         <!--<label class="lbl" style="margin-right: 216px" id="sub">subject title :</label>
         <input type="text" name="es-question" style="width: 140px"><hr>-->
         <input type="submit" value="submit your exam" class="exam-sub" style="margin-left: 14px;width: 63%" onclick="addexam()">
-    </form> --}}
+    </form>
 </div>
 </div>
 @endsection

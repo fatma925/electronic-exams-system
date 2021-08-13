@@ -2,7 +2,7 @@
 @section('title', 'student register')
 @section('subtitle', 'GetYourExam-login')
 @section('content')
-         <form method="POST" action="student_register2"> 
+         <form method="POST" action="api/studentRegister"> 
              @csrf
              <input type="text" placeholder="full name" name="name" required><br>
              <input type="password" placeholder="password" name="pass" required><br>

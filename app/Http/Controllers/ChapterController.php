@@ -3,10 +3,10 @@
 namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
-use App\Models\level;
+use App\Models\chapter;
 use Illuminate\Support\Facades\Validator;
-
-class LevelController extends Controller
+use App\Models\subject;
+class ChapterController extends Controller
 {
     /**
      * Display a listing of the resource.
@@ -15,8 +15,19 @@ class LevelController extends Controller
      */
     public function index()
     {
-        $levels = level::all();
-        return response()->json($levels, 200);
+        //
+        $chapters = chapter::all();
+        return response()->json($chapters, 200);
+    }
+
+    /**
+     * Show the form for creating a new resource.
+     *
+     * @return \Illuminate\Http\Response
+     */
+    public function create()
+    {
+        //
     }
 
     /**
@@ -24,11 +35,13 @@ class LevelController extends Controller
      *
      * @param  \Illuminate\Http\Request  $request
      * @return \Illuminate\Http\Response
+     * 
      */
     public function store(Request $request)
     {
         $validator = Validator::make($request->all(),[
-            'level_name'=> 'required|unique:_levels',
+            'title'=> 'required|unique:chapters',
+            'subId' => 'required'
         ]);
 
         if($validator->fails()){
@@ -37,10 +50,12 @@ class LevelController extends Controller
         }
         else{
             // create new record
-            $level = new level();
-            $level->level_name = $request->input('level_name');
-            $level->save();
-            return response()->json($level,200);
+            $chapter = new chapter();
+            $chapter->title = $request->input('title');
+            $chapter->subId = $request->input('subId');
+            $chapter->chTitle = $request->input('chTitle');
+            $chapter->save();
+            return response()->json($chapter,201);
         }
     }
 
@@ -52,12 +67,18 @@ class LevelController extends Controller
      */
     public function show($id)
     {
-        $level = level::find($id);
-        if(is_null($level)){
-            return response()->json('record not found', 404);
-        }
-        return response()->json($level);
+        //
+    }
 
+    /**
+     * Show the form for editing the specified resource.
+     *
+     * @param  int  $id
+     * @return \Illuminate\Http\Response
+     */
+    public function edit($id)
+    {
+        //
     }
 
     /**
@@ -67,26 +88,9 @@ class LevelController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-
-
-    public function edit($id)
-    {
-        $level = level::find($id);
-        $name = $level->level_name;
-        return view('Admin.editLevel', ['name'=> $name, 'id'=>$id]);
-        
-    }
     public function update(Request $request, $id)
     {
-        $request->validate([
-            'level_name'=> 'required',
-        ]);
-        $level = level::find($id);
-        if(is_null($level)){
-            return response()->json('record not found', 404);
-        }
-        $level->update($request->all());
-        return response()->json($level, 200);
+        //
     }
 
     /**
@@ -97,10 +101,10 @@ class LevelController extends Controller
      */
     public function destroy($id)
     {
-        $level = level::destroy($id);
-        if(is_null($level)){
+        $chapter = chapter::destroy($id);
+        if(is_null($chapter)){
             return response()->json('record not found', 404);
         }
-        return response()->json("deleted ");
+        return response()->json("chapter deleted",200);
     }
 }
