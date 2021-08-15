@@ -17,6 +17,7 @@ class CreateExamsTable extends Migration
             $table->id();
             $table->time("start");
             $table->time("end");
+            $table->dateTime("date");
             $table->integer("allQs");
             $table->integer("hardQs");
             $table->integer("midQs");

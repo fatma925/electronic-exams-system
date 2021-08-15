@@ -9,6 +9,7 @@ use App\Http\Controllers\StudentController;
 use App\Http\Controllers\SubjectController;
 use App\Http\Controllers\ProfessorController;
 use App\Http\Controllers\ChapterController;
+use App\Http\Controllers\ExamController;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Route;
 
@@ -34,7 +35,7 @@ Route::resource('levels', LevelController::class);
 Route::resource('subjects', SubjectController::class);
 Route::resource('professors', ProfessorController::class);
 Route::resource('chapters', ChapterController::class);
-
+Route::resource('exams', ExamController::class);
 Route::post('logout', [SystemEntryController::class, 'logout']);
 Route::group(['middleware'=>['auth:sanctum']],function () {
     

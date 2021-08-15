@@ -3,6 +3,7 @@
 @section('subtitle', 'result')
 
 @section('content')
+<header style="width: 80%">your results</header>
 <div class="middle ">
     <table class="table">
     <thead>

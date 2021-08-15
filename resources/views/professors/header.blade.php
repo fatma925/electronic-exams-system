@@ -10,7 +10,7 @@
      <nav>
           <span class="logo">GetYourExam</span>
           <div class="left">
-              <select id="sub">
+              <select class="sub">
                   
               </select>
              <div class="dropdown">
@@ -33,7 +33,7 @@
             <a href="#" class="logout2">Logout</a>
         </span>
      </nav>
-     <header>@yield('subtitle')</header>
+     {{-- <header>@yield('subtitle')</header> --}}
      
 
 @yield('content')
@@ -59,7 +59,7 @@ $.each(subjects, function(key, sub){
         `;
     //alert(key + ":" + depart.depart_name)
     });
-$('#sub').append(output);
+$('.sub').append(output);
     });
 }
 });

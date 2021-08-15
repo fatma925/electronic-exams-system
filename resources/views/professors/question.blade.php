@@ -3,6 +3,7 @@
 @section('subtitle', 'questions')
 
 @section('content')
+<header style="width: 80%">add new question</header>
 <div class="middle ">
 
 <table class="table">

@@ -3,8 +3,9 @@
 @section('subtitle', 'chapters')
 
 @section('content')
-    
+<header style="width: 80%">add new chapter</header>
 <div class="middle ">
+    
   <table class="table">
   <thead>
     <tr>
